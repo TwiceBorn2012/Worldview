@@ -1,0 +1,129 @@
+<div class="banner-innerpage" style="background-image: url(../assets/images/landingpage/banner-bg2.jpg)">
+  <div class="container">
+    <!-- Row  -->
+    <div class="row justify-content-center">
+      <!-- Column -->
+      <div class="col-md-6 align-self-center text-center no-trans">
+        <h1 class="title">CONTACT US</h1>
+        <h6 class="subtitle op-8">
+          We are Small Team of Creative People working together
+        </h6>
+      </div>
+      <!-- Column -->
+    </div>
+  </div>
+</div>
+
+<div class="contact3 spacer">
+  <div class="row">
+    <div class="col-md-12 no-trans">
+      <div class="container">
+        <div class="row m-0">
+          <div class="col-lg-7 no-trans">
+            <div class="card-shadow" data-aos="flip-left" data-aos-duration="1200">
+              <img [src]="img" alt="wrapkit" class="img-responsive" />
+            </div>
+          </div>
+          <div class="col-lg-5 no-trans">
+            <div class="contact-box m-l-30">
+              <h1 class="title font-light m-t-10">Contact Us</h1>
+
+
+              <form #contact="ngForm" (ngSubmit)="submit(contact)" class="m-t-30" data-aos="fade-left"
+                data-aos-duration="1200">
+                <div class="row">
+                  <div class="col-lg-12 no-trans">
+                    <div class="form-group m-t-10">
+                      <input type="text" required class="form-control" placeholder="Name"
+                        [class.is-invalid]="name.invalid && name.touched" name="name" #name="ngModel" ngModel />
+                    </div>
+                  </div>
+                  <div class="col-lg-12 no-trans">
+                    <div class="form-group m-t-10">
+                      <input type="email" email required class="form-control" placeholder="Email address"
+                        [class.is-invalid]="email.invalid && email.touched" name="email" #email="ngModel" ngModel />
+                    </div>
+                  </div>
+                  <div class="col-lg-12 no-trans">
+                    <div class="form-group m-t-10">
+                      <input type="number" required class="form-control" placeholder="Phone"
+                        [class.is-invalid]="phone.invalid && phone.touched" name="phone" #phone="ngModel" ngModel />
+                    </div>
+                  </div>
+                  <div class="col-lg-12 no-trans">
+                    <div class="form-group m-t-10">
+                      <textarea required class="form-control" placeholder="Message" rows="3"
+                        [class.is-invalid]="message.invalid && message.touched" name="message" #message="ngModel"
+                        ngModel></textarea>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 no-trans">
+                    <button type="submit" class="btn btn-info-gradiant btn-md m-t-20 btn-arrow"
+                      [disabled]="contact.invalid">
+                      <span> SUBMIT <i class="ti-arrow-right"></i></span>
+                    </button>
+                  </div>
+                </div>
+              </form>
+
+
+
+
+
+
+            </div>
+          </div>
+          <div hidden=true class="col-lg-12 no-trans">
+            <div class="card m-t-40">
+              <div class="row">
+                <div class="col-lg-4 col-md-4 no-trans" *ngFor="let con of contacts">
+                  <div class="card-body d-flex no-block c-detail p-l-0">
+                    <div class="m-r-20 align-self-center">
+                      <img [src]="con.img" alt="wrapkit" />
+                    </div>
+                    <div class="">
+                      <h6 class="font-medium">{{ con.type }}</h6>
+                      <p class="">{{ con.contact1 }}</p>
+                      <p *ngIf="con.contact2 !== ''" class="">
+                        {{ con.contact2 }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Contact Us</h4>
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="fclick(contact)">
+      <div class="form-group">
+        <label class="text-dark font-medium mr-3">Name :</label>
+        <label>{{ con.name }}</label>
+      </div>
+      <div class="form-group">
+        <label class="text-dark font-medium mr-3">Email :</label>
+        <label>{{ con.email }}</label>
+      </div>
+      <div class="form-group">
+        <label class="text-dark font-medium mr-3">Phone :</label>
+        <label>{{ con.phone }}</label>
+      </div>
+      <div class="form-group">
+        <label class="text-dark font-medium mr-3">Message :</label>
+        <label>{{ con.message }}</label>
+      </div>
+      <button type="submit" class="btn btn-info-gradiant btn-block">OK</button>
+    </form>
+  </div>
+</ng-template>
